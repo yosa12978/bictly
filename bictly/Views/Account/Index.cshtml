@@ -1,0 +1,33 @@
+﻿@model IEnumerable<bictly.Models.Article>
+
+@{
+    ViewData["Title"] = "Account";
+}
+
+    <div>
+        <h1>Account</h1><hr />
+        <h2>@ViewBag.UserData.username</h2><hr>
+        @if (ViewBag.UserData.username == User.Identity.Name)
+        {
+            <small>API access token: @ViewBag.UserData.token</small>
+        }
+        <h1>Articles</h1>
+        @if (ViewBag.UserData.username == User.Identity.Name)
+        {
+            <a href="/Main/Create/">Create Article</a><br>
+        }<br>
+        @foreach (var i in Model)
+        {
+            <div>
+                <small>@Html.DisplayFor(m => i.date) - <a href="/Account/?name=@i.Author.username">@Html.DisplayFor(m => i.Author.username)</a> - views: @Html.DisplayFor(m => i.popularity)</small>
+                <h2><a href="/Main/Detail/@i.id/">@Html.DisplayFor(m => i.title)</a></h2>
+                <small>@Html.DisplayFor(m => i.description)</small>
+                @if (User.Identity.Name == i.Author.username)
+                {
+                    <a href="/Main/Edit/@i.id/" class="btn btn-warning">Edit</a>
+                    <a href="/Main/Delete/@i.id/" class="btn btn-danger">Delete</a>
+                }
+                <hr>
+            </div>
+        }
+    </div>

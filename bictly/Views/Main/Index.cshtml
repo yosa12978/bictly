@@ -1,0 +1,37 @@
+﻿@model IEnumerable<bictly.Models.Article>
+@{
+    ViewData["Title"] = "Articles";
+}
+<h1>Articles</h1>
+
+<hrader>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom" style="margin-left:0px;">
+        <div>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" style="font-size: 20px;">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item" style="margin-right: 10px; width: 100px;">
+                        <a class="nav-link text-white btn btn-dark" asp-area="" asp-controller="Main" asp-action="Index">All</a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 10px; width: 100px;">
+                        <a class="nav-link text-white btn btn-dark" asp-area="" asp-controller="Main" asp-action="Top">Top</a>
+                    </li>
+                    <li class="nav-item" style="width: 100px;">
+                        <a class="nav-link text-white btn btn-dark" asp-area="" asp-controller="Main" asp-action="Search">Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</hrader>
+<br><br>
+        <div>
+            @foreach (var i in Model)
+            {
+                <div>
+                    <small>@Html.DisplayFor(m => i.date) - <a href="/Account/?name=@i.Author.username">@Html.DisplayFor(m => i.Author.username)</a> - views: @Html.DisplayFor(m => i.popularity)</small>
+                    <h2><a href="/Main/Detail/@i.id/">@Html.DisplayFor(m => i.title)</a></h2>
+                    <small>@Html.DisplayFor(m => i.description)</small>
+                    <hr>
+                </div>
+            }
+        </div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<bictly.Models.Article>
+@{
+    ViewData["Title"] = "Search";
+}
+<h1>Articles</h1>
+
+<hrader>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom" style="margin-left:0px;">
+        <div>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" style="font-size: 20px;">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item" style="margin-right: 10px; width: 100px;">
+                        <a class="nav-link text-white btn btn-dark" asp-area="" asp-controller="Main" asp-action="Index">All</a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 10px; width: 100px;">
+                        <a class="nav-link text-white btn btn-dark" asp-area="" asp-controller="Main" asp-action="Top">Top</a>
+                    </li>
+                    <li class="nav-item" style="width: 100px;">
+                        <a class="nav-link text-white btn btn-dark" asp-area="" asp-controller="Main" asp-action="Search">Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</hrader>
+<br>
+<br>
+
+<h1>Search</h1>
+<hr>
+<div>
+    <div>
+        <form method="get">
+            <input type="radio" name="type" value="Article" checked>Article</input>
+            <input type="radio" name="type" value="User" style="margin-left:10px;">User</input>
+            <input name="search" class="form-control" placeholder="Search" style="width: 600px;" /><br>
+            <input type="submit" value="Search" class="btn btn-dark" />
+        </form>
+    </div>
+</div>
+<br>
+<br>
+
+@if (ViewBag.users != null)
+{
+<div>
+    <ul>
+        @foreach (var i in ViewBag.users)
+        {
+            <li><a href="/Account/?name=@i.username">@i.username</a></li>
+        }
+    </ul>
+</div>
+}
+
+@if (ViewBag.articles != null)
+{
+    <div>
+        @foreach (var i in ViewBag.articles)
+        {
+        <div>
+            <small>@i.date - <a href="/Account/?name=@i.Author.username">@i.Author.username</a> - views: @i.popularity</small>
+            <h2><a href="/Main/Detail/@i.id/">@i.title</a></h2>
+            <hr>
+        </div>
+        }
+    </div>
+}

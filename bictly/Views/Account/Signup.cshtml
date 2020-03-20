@@ -1,0 +1,32 @@
+﻿@model bictly.Models.User
+
+@{
+    ViewData["Title"] = "Signup";
+}
+<h1>Signup</h1>
+<hr />
+@if (ViewBag.Error != null)
+{
+    <h4 class="text-danger">@ViewBag.Error</h4>
+}
+<div style="width: 400px;">
+    <div>
+        <form asp-action="Signup">
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="username" class="form-control" placeholder="username"/>
+                <span asp-validation-for="username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="password" class="form-control" type="password" placeholder="password"/>
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input name="passwordC" class="form-control" type="password"  placeholder="password confrim"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Signup" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>

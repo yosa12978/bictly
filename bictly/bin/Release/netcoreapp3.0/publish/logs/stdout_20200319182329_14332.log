@@ -1,0 +1,8 @@
+Unhandled exception. System.NotSupportedException: Building this implementation of IWebHostBuilder is not supported.
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.Build()
+   at bictly.Program.<>c.<CreateHostBuilder>b__1_0(IWebHostBuilder webBuilder) in D:\asp.net apps\bictly\bictly\Program.cs:line 26
+   at Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.<>c__DisplayClass0_0.<ConfigureWebHostDefaults>b__0(IWebHostBuilder webHostBuilder)
+   at Microsoft.Extensions.Hosting.GenericHostWebHostBuilderExtensions.ConfigureWebHost(IHostBuilder builder, Action`1 configure)
+   at Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults(IHostBuilder builder, Action`1 configure)
+   at bictly.Program.CreateHostBuilder(String[] args) in D:\asp.net apps\bictly\bictly\Program.cs:line 20
+   at bictly.Program.Main(String[] args) in D:\asp.net apps\bictly\bictly\Program.cs:line 16

@@ -1,0 +1,35 @@
+﻿@model bictly.Models.Article
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1><hr>
+@if (ViewBag.Error != null)
+{
+    <h4 class="text-danger">@ViewBag.Error</h4>
+}
+<script src="https://cdn.tiny.cloud/1/uvgdoko25cnan2u4rt9n9uat33hvoah26qqhieavnv49kfxy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({ selector: 'textarea' });</script>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" style="width:1000px;"/>
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="text" class="control-label"></label>
+                <textarea asp-for="text" class="form-control" style="width: 1000px; height:500px;" id="editor"></textarea>
+                <span asp-validation-for="text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
