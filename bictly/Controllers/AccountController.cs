@@ -128,10 +128,26 @@ namespace bictly.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.SignOutAsync();
+            await HttpContext.SignOutAsync();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Edit()
+        {
+            User UserData = _context.User.First(m => m.username == HttpContext.User.Identity.Name);
+            return View(UserData);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(string username)
+        {
+
+            return View();
         }
     }
 }

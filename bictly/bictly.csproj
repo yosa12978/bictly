@@ -5,6 +5,10 @@
 	<AspNetCoreHostingModel>inprocess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="LICENSE" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <Folder Include="Services\" />
