@@ -26,7 +26,7 @@ namespace bictly.Controllers
         public IActionResult Index(string name)
         {
             if (name == null)
-                return NotFound();
+                name = HttpContext.User.Identity.Name;
             var curruser = _context.User.FirstOrDefault(m => m.username == name);
             if (curruser == null)
                 return NotFound();
@@ -132,22 +132,6 @@ namespace bictly.Controllers
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        [Authorize]
-        public IActionResult Edit()
-        {
-            User UserData = _context.User.First(m => m.username == HttpContext.User.Identity.Name);
-            return View(UserData);
-        }
-
-        [HttpPost]
-        [Authorize]
-        public async Task<IActionResult> Edit(string username)
-        {
-
-            return View();
         }
     }
 }

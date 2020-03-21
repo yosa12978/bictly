@@ -9,7 +9,7 @@
         <h2>@ViewBag.UserData.username</h2><hr>
         @if (ViewBag.UserData.username == User.Identity.Name)
         {
-            <small>API access token: @ViewBag.UserData.token</small>
+            <small>API access token: @ViewBag.UserData.token</small><br>
         }
         <h1>Articles</h1>
         @if (ViewBag.UserData.username == User.Identity.Name)
